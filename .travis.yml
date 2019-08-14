@@ -1,0 +1,10 @@
+sudo: required
+language: generic
+services:
+  - docker
+
+before_install:
+  - docker build -t jfbill/docker-react -f Dockerfile.dev .
+
+scripts:
+  - docker run -e CI=true jfbill/docker-react npm run test
